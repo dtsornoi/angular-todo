@@ -1,0 +1,25 @@
+<div
+  class="mt-3">
+  <div
+    class="input-group">
+    <div
+      class="input-group-prepend">
+      <span
+        class="input-group-text">Add new Task</span>
+    </div>
+    <input
+      type="text"
+      [(ngModel)]="newTask"
+      placeholder="E.g. Go to Gym"
+      (keyup.enter)="addTodo.emit(newTask); newTask = ''"
+      class="form-control">
+    <div
+      class="input-group-append">
+      <button
+        (click)="addTodo.emit(newTask); newTask = ''"
+        class="btn btn-primary">
+        Add
+      </button>
+    </div>
+  </div>
+</div>

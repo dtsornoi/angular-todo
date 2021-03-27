@@ -1,0 +1,40 @@
+<div>
+
+  <span class="mb-3"><p class="mr-5">{{todo.task}}</p></span>
+  <span class="mb-3">
+    <p class="mr-5">
+      Created on: {{todo.created | date}}
+    </p>
+  </span>
+
+    <div class="mt-4">
+      <span *ngIf="todo.completed">
+        <button
+          (click)="changeToDoStatus.emit(todo)"
+          class="btn btn-sm btn-warning mr-4">Mark as incomplete</button>
+      </span>
+
+      <span *ngIf="!todo.completed">
+          <button
+            (click)="changeToDoStatus.emit(todo)"
+            class="btn btn-sm btn-success mr-4">
+            Mark as Complete
+          </button>
+      </span>
+
+      <span *ngIf="!todo.completed">
+          <button
+            (click)="setActive.emit(todo)"
+            class="btn btn-sm btn-warning mr-4">
+            Update
+          </button>
+      </span>
+
+      <span>
+        <button
+          (click)="deleteTodo.emit(todo)"
+          class="btn btn-sm btn-danger mr-4">Delete</button>
+      </span>
+    </div>
+
+</div>

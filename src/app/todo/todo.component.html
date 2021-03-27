@@ -1,0 +1,46 @@
+<section class="container">
+  <app-add-item
+  (addTodo)="onAddTodo($event)"></app-add-item>
+  <div
+    class="mt-3">
+    <div
+      class="input-group">
+      <div
+        class="input-group-prepend">
+      <span
+        class="input-group-text">Update Task</span>
+      </div>
+      <input
+        [(ngModel)]="activeTodo.task"
+        type="text"
+        placeholder="Select a Todo"
+        (keyup.enter)="updateTodo()"
+        class="form-control">
+      <div
+        class="input-group-append">
+        <button
+          (click)="updateTodo()"
+          class="btn btn-primary">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ul
+      class="list-group list-group-flush">
+      <li
+        *ngFor="let item of todoList"
+        class="list-group-item"
+      [ngClass]="(item.completed)? 'list-group-item-success' : 'list-group-item-danger'">
+        <app-todo-item
+          (deleteTodo)="onDelete($event.id)"
+          (changeToDoStatus)="onChangeStatus($event.id)"
+          (setActive)="activeTodo = $event"
+          [todo]="item">
+        </app-todo-item>
+      </li>
+    </ul>
+  </div>
+
+</section>
